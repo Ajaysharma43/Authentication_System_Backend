@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const ejs = require("ejs");
 const Users = require('./Schemma/UserSchemma')
-const Authentication = require('./Authentication/Authentication')
+const Authentication = require('./Routes/Authentication')
+const data  = require('./Routes/DataRoute')
 const database = require('./Database_connection/Database_connection')
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/Authentication',Authentication)
+app.use('/Data',data)
 
 database();
 
