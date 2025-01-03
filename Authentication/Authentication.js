@@ -3,9 +3,7 @@ const mongoose = require('mongoose')
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const ejs = require("ejs");
-const Users = require('./Schemma/UserSchemma')
-const Authentication = require('./Authentication/Authentication')
-const database = require('./Database_connection/Database_connection')
+const router = express.Router()
 
 const app = express();
 
@@ -15,10 +13,9 @@ app.use(express.json())
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/Authentication',Authentication)
 
-database();
+router.post('/Signup',async(req,res)=>{
 
+})
 
-
-app.listen(3000)
+module.exports = router;
