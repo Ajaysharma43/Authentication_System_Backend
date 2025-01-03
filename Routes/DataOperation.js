@@ -5,9 +5,20 @@ const Users = require("../Schemma/UserSchemma")
 
 const app = express();
 
-Router.get('/UsersData', async(req,res)=>{
-    const UsersData = await Users.find()
-    res.send(UsersData)
+Router.post('/Delete', async(req,res)=>{
+    const id = req.body.Id;
+    const User = await Users.deleteOne({_id:id})
+    res.send('removed')
 });
+
+Router.post('/Update',async(req,res)=>{
+    const id = req.body.id;
+    const username = req.body.Username;
+    const password = req.body.Password;
+    const email = req.body.Email;
+
+    const findUser = await Users.updateOne({_id:id},{$set:{Username:username,Password:password,Email:email}})
+    res.send('updated')
+})
 
 module.exports = Router;
