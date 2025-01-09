@@ -7,6 +7,7 @@ const Users = require('./Schemma/UserSchemma')
 const Authentication = require('./Routes/Authentication')
 const data  = require('./Routes/DataRoute')
 const DataOperations = require('./Routes/DataOperation')
+const Sorting = require('./Routes/SortingRoute')
 const database = require('./Database_connection/Database_connection')
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/Authentication',Authentication)
 app.use('/Data',data)
 app.use('/Operation',DataOperations)
+app.use('/Routes',Sorting)
 
 database();
 

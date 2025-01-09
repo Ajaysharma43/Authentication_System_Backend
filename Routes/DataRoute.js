@@ -15,4 +15,9 @@ Router.get('/UsersData', async(req,res)=>{
     res.json({UsersData,TotalPages:Math.ceil(totalsongs / limit)})
 });
 
+Router.get('/FullUsersData', async(req,res)=>{
+    const UsersData = await Users.find();
+    res.json({UsersData})
+});
+
 module.exports = Router;
